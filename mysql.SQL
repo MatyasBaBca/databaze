@@ -37,3 +37,26 @@ CREATE TABLE `teachers` (
 
 INSERT INTO `teachers` (`firstname`, `lastname`, `birthdate`, `address`, `description`, `city`, `id_teacher`) VALUES
 ('martin',	'kokes',	'1980-12-04',	'ossp',	'ucitel na IT',	'Kolin',	1),
+
+#cviceni 4
+CREATE TABLE `classrooms` (
+  `id_classroom` int(11) NOT NULL AUTO_INCREMENT,
+  `number` varchar(255) COLLATE utf8_czech_ci NOT NULL,
+  `seat_count` int(11) NOT NULL,
+  `location` varchar(255) COLLATE utf8_czech_ci NOT NULL,
+  PRIMARY KEY (`id_classroom`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
+
+INSERT INTO `classrooms` (`id_classroom`, `number`, `seat_count`, `location`) VALUES
+(1,	'13',	50,	'druhá budova'),
+
+CREATE TABLE `subjects` (
+  `id_subject` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_czech_ci NOT NULL,
+  `description` text CHARACTER SET utf8 COLLATE utf8_czech_ci NOT NULL,
+  `shortcut` varchar(255) CHARACTER SET utf8 COLLATE utf8_czech_ci NOT NULL,
+  PRIMARY KEY (`id_subject`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+INSERT INTO `subjects` (`id_subject`, `name`, `description`, `shortcut`) VALUES
+(1,	'programove vybaveni',	'hrani',	'PV'),
