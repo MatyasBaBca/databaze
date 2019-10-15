@@ -77,3 +77,19 @@ WHERE id_guarantor = 99;
 
 SELECT SUM(seats)
 FROM classrooms;
+
+SELECT location, SUM(seats) AS pocet_mist
+FROM classrooms
+GROUP BY location;
+
+SELECT location, SUM(seats) AS pocet_mist
+FROM classrooms
+GROUP BY location
+ORDER BY pocet_mist;
+
+SELECT * FROM subjects
+ORDER BY name DESC(ASC);
+
+SELECT id_guarantor, COUNT(*) AS pocet_predmetu
+FROM subjects
+GROUP BY id_guarantor;
