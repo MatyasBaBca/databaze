@@ -47,7 +47,7 @@ CREATE TABLE `classrooms` (
   PRIMARY KEY (`id_classroom`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
-INSERT INTO `classrooms` (`id_classroom`, `number`, `seat_count`, `location`) VALUES
+INSERT INTO `classrooms` ( `number`, `seat_count`, `location`) VALUES
 (1,	'13',	50,	'druhá budova'),
 
 CREATE TABLE `subjects` (
@@ -58,5 +58,22 @@ CREATE TABLE `subjects` (
   PRIMARY KEY (`id_subject`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
-INSERT INTO `subjects` (`id_subject`, `name`, `description`, `shortcut`) VALUES
+INSERT INTO `subjects` ( `name`, `description`, `shortcut`) VALUES
 (1,	'programove vybaveni',	'hrani',	'PV'),
+
+#cviceni 5
+SELECT * FROM subjects;
+DELETE 
+FROM subjects
+WHERE id_subjects = 5; (5 OR id_subjects = 4;)
+
+UPDATE subjects
+SET id_guarantor = 4
+WHERE id_subject = 4 OR id_subject = 5;
+
+UPDATE subjects
+SET id_guarantor = 4
+WHERE id_guarantor = 99;
+
+SELECT SUM(seats)
+FROM classrooms;
