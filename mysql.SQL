@@ -118,6 +118,7 @@ CREATE TABLE `lessons` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 INSERT INTO `lessons` (`id_lesson`, `position`, `start_time`, `end_time`) VALUES
+(0, 0, '07:00:00',	'07:45:00')
 (1,	1,	'07:50:00',	'08:35:00'),
 (2,	2,	'08:45:00',	'09:30:00'),
 (3,	3,	'09:40:00',	'10:25:00'),
@@ -128,3 +129,24 @@ INSERT INTO `lessons` (`id_lesson`, `position`, `start_time`, `end_time`) VALUES
 (8,	8,	'14:45:00',	'15:30:00'),
 (9,	9,	'15:35:00',	'16:20:00'),
 (10,	10,	'16:25:00',	'17:10:00');
+
+#cviceni 7
+SELECT *
+FROM schedule sch
+JOIN teachers t ON sch.id_teacher = t.id_teacher
+JOIN classes cls ON sch.id_class = cls.id_class
+JOIN subjects su ON sch.id_subject = su.id_subject
+JOIN classrooms clrs ON sch.id_subject = clrs.id_classroom
+JOIN lessons le ON sch.id_subject = le.id_lesson;
+
+UPDATE schedule
+SET id_lesson = 2
+WHERE id_schedule = 1;
+
+SELECT sch.date AS Datum, l.position AS vyucovaci_hodina, su.shortcut AS předmět, t. lastname AS učitel, clrs.number AS místnost
+FROM schedule sch
+JOIN teachers t ON sch.id_teacher = t.id_teacher
+JOIN classes cls ON sch.id_class = cls.id_class
+JOIN subjects su ON sch.id_subject = su.id_subject
+JOIN classrooms clrs ON sch.id_subject = clrs.id_classroom
+JOIN lessons l ON sch.id_subject = l.id_lesson
