@@ -150,3 +150,8 @@ JOIN classes cls ON sch.id_class = cls.id_class
 JOIN subjects su ON sch.id_subject = su.id_subject
 JOIN classrooms clrs ON sch.id_subject = clrs.id_classroom
 JOIN lessons l ON sch.id_subject = l.id_lesson
+
+#cviceni 8
+https://www.draw.io/#G1yxqvvNd6SbCXGmvlHTCunRruGq50lWQT
+
+#cviceni 9
