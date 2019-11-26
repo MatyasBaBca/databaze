@@ -152,6 +152,9 @@ JOIN classrooms clrs ON sch.id_subject = clrs.id_classroom
 JOIN lessons l ON sch.id_subject = l.id_lesson
 
 #cviceni 8
+                      SCHOOL
 https://www.draw.io/#G1yxqvvNd6SbCXGmvlHTCunRruGq50lWQT
 
 #cviceni 9
+                      BOOKS
+https://www.draw.io/#G1AEx6D3bUuygNZiMcBEo5oKK5lR7FECvV
