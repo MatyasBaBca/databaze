@@ -180,3 +180,11 @@ JOIN genres g ON g.id_genre = bg.id_genre;
 #cviceni X
                 OSSP_wars
 https://www.draw.io/#G1XckmHXIZczmCjVaxilGab8QIB_Zox9Xo
+
+SELECT AVG(damage)
+FROM units;
+SELECT MAX(HP)
+FROM units;
+SELECT MIN(damage)
+FROM units;
+
