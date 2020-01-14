@@ -156,5 +156,27 @@ JOIN lessons l ON sch.id_subject = l.id_lesson
 https://www.draw.io/#G1yxqvvNd6SbCXGmvlHTCunRruGq50lWQT
 
 #cviceni 9
-                      BOOKS
+                      LIBRARY
 https://www.draw.io/#G1AEx6D3bUuygNZiMcBEo5oKK5lR7FECvV
+
+SELECT COUNT(*) AS pocet_autoru FROM authors;
+SELECT COUNT(*) AS pocet_knih FROM books;
+SELECT COUNT(*) AS pocet_zanry FROM genres;
+SELECT COUNT(*) AS pocet_vydavatelstvi FROM publishers;
+
+SELECT bok.id_book AS ID, title AS název, firstname AS jméno, lastname AS přijmení, pub.name AS nakladatelství, gen.name AS žánr
+FROM books bok
+JOIN authors au ON bok.id_author = au.id_author
+JOIN publishers pub ON bok.id_publisher = pub.id_publisher
+JOIN genres gen ON bok.id_genre = gen.id_genre;
+
+SELECT bok.id_book AS ID, title AS název, firstname AS jméno, lastname AS přijmení, pub.name AS nakladatelství, g.id_genre AS žánr
+FROM books bok
+JOIN authors au ON bok.id_author = au.id_author
+JOIN publishers pub ON bok.id_publisher = pub.id_publisher
+JOIN books_genres bg ON bok.id_book = bg.id_book
+JOIN genres g ON g.id_genre = bg.id_genre;
+
+#cviceni X
+                OSSP_wars
+https://www.draw.io/#G1XckmHXIZczmCjVaxilGab8QIB_Zox9Xo
