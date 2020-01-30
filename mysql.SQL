@@ -197,3 +197,10 @@ SELECT g.name, COUNT(*) AS pocet_hracu_guildy
 FROM players p
 JOIN guilds g ON p.id_guild = g.id_guild
 GROUP BY g.id_guild
+
+SELECT nickname AS prezdivka, ch.name AS jmeno_charakteru, level AS uroven, c.name AS trida
+FROM players p
+JOIN characters ch ON p.id_player = ch.id_player
+JOIN classes c ON ch.id_class = c.id_class
+SELECT MAX(level)
+FROM characters;
