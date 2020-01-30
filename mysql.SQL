@@ -188,3 +188,12 @@ FROM units;
 SELECT MIN(damage)
 FROM units;
 
+SELECT name AS nazev_guildy, nickname AS přezdívka, created_ad AS datum_vytvoreni
+FROM players p
+JOIN guilds g ON p.id_guild = g.id_guild
+ORDER BY nazev_guildy;
+
+SELECT g.name, COUNT(*) AS pocet_hracu_guildy
+FROM players p
+JOIN guilds g ON p.id_guild = g.id_guild
+GROUP BY g.id_guild
