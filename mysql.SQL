@@ -204,3 +204,128 @@ JOIN characters ch ON p.id_player = ch.id_player
 JOIN classes c ON ch.id_class = c.id_class
 SELECT MAX(level)
 FROM characters;
+
+SELECT COALESCE(g.id_guild, "Nevyplněno") AS "ID guildy", p.id_player AS "ID hráče", g.name AS "Jméno", p.nickname AS "Jmého hráče"
+FROM guilds g
+RIGHT JOIN players p ON g.id_guild = p.id_guild;
+
+SELECT *
+FROM players
+ORDER BY id_player
+LIMIT 5;
+
+DELETE FROM players 
+WHERE id_guild = 2
+
+----OSSP_WARS----
+
+
+CREATE DATABASE `ossp_wars` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_czech_ci */;
+USE `ossp_wars`;
+
+CREATE TABLE `characters` (
+  `id_character` int(11) NOT NULL AUTO_INCREMENT,
+  `id_player` int(11) NOT NULL,
+  `id_class` int(11) NOT NULL,
+  `name` varchar(255) COLLATE cp1250_czech_cs NOT NULL,
+  `level` int(11) NOT NULL,
+  `HP` int(11) NOT NULL,
+  `money` int(11) NOT NULL,
+  `strength` int(11) NOT NULL,
+  `intelligence` int(11) NOT NULL,
+  `agility` int(11) NOT NULL,
+  `defense` int(11) NOT NULL,
+  `mana` int(11) NOT NULL,
+  PRIMARY KEY (`id_character`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1250 COLLATE=cp1250_czech_cs;
+
+INSERT INTO `characters` (`id_character`, `id_player`, `id_class`, `name`, `level`, `HP`, `money`, `strength`, `intelligence`, `agility`, `defense`, `mana`) VALUES
+(1,	1,	1,	'BaBča',	69,	156000,	321321,	1000,	200,	500,	1200,	250),
+(2,	1,	2,	'BaBčus',	54,	144000,	30000,	250,	1000,	300,	200,	500),
+(3,	2,	3,	'jdoe999',	12,	2000,	8000,	250,	300,	150,	200,	100),
+(4,	2,	4,	'Jd0e123',	16,	3000,	10000,	200,	123,	66,	123,	100),
+(5,	3,	5,	'Knefi',	42,	13000,	25000,	423,	123,	561,	325,	123),
+(6,	3,	6,	'KnefiCZ',	65,	156000,	56500,	2300,	652,	256,	654,	200);
+
+CREATE TABLE `classes` (
+  `id_class` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE cp1250_czech_cs NOT NULL,
+  PRIMARY KEY (`id_class`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1250 COLLATE=cp1250_czech_cs;
+
+INSERT INTO `classes` (`id_class`, `name`) VALUES
+(1,	'warrior'),
+(2,	'mage'),
+(3,	'hunter'),
+(4,	'necromancer'),
+(5,	'thief'),
+(6,	'paladin');
+
+CREATE TABLE `guilds` (
+  `id_guild` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE cp1250_czech_cs NOT NULL,
+  `created_ad` datetime NOT NULL,
+  PRIMARY KEY (`id_guild`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1250 COLLATE=cp1250_czech_cs;
+
+INSERT INTO `guilds` (`id_guild`, `name`, `created_ad`) VALUES
+(1,	'ASDASOVE',	'2020-01-14 10:55:45'),
+(2,	'ossp',	'2020-01-14 10:56:32'),
+(3,	'Božena Němcová',	'2020-02-13 09:18:04');
+
+CREATE TABLE `players` (
+  `id_player` int(11) NOT NULL AUTO_INCREMENT,
+  `nickname` varchar(255) COLLATE cp1250_czech_cs NOT NULL,
+  `email` varchar(255) COLLATE cp1250_czech_cs NOT NULL,
+  `password` varchar(255) COLLATE cp1250_czech_cs NOT NULL,
+  `birthdate` date NOT NULL,
+  `create-ad` datetime NOT NULL,
+  `newsletter` tinytext COLLATE cp1250_czech_cs NOT NULL,
+  `gdpr` tinytext COLLATE cp1250_czech_cs NOT NULL,
+  `id_guild` int(11) NOT NULL,
+  PRIMARY KEY (`id_player`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1250 COLLATE=cp1250_czech_cs;
+
+INSERT INTO `players` (`id_player`, `nickname`, `email`, `password`, `birthdate`, `create-ad`, `newsletter`, `gdpr`, `id_guild`) VALUES
+(1,	'BaBca',	'babca@babca.com',	'*6BB4837EB74329105EE4568DDA7DC67ED2CA2AD9',	'2002-12-12',	'2020-01-14 10:52:17',	'',	'',	1),
+(2,	'JDoe',	'jdoe@jdoe.com',	'*A1D5B40F60B310D4E9DF90C35347F6DCE14C3EC8',	'2020-01-14',	'2020-01-14 10:52:59',	'',	'',	2),
+(3,	'Knajfi',	'Knajfl@knajfl.com',	'*D2595A17C97EDE875647A5DABBD135E81AC2550B',	'2020-01-14',	'2020-01-14 10:53:54',	'',	'',	3),
+(4,	'MartinKokainCZ',	'martin@kokain.com',	'kokain',	'2020-02-13',	'2020-02-13 09:16:57',	'',	'',	0);
+
+CREATE TABLE `units` (
+  `id_unit` int(11) NOT NULL AUTO_INCREMENT,
+  `id_unit_type` int(11) NOT NULL,
+  `HP` int(11) NOT NULL,
+  `damage` int(11) NOT NULL,
+  `id_character` int(11) NOT NULL,
+  PRIMARY KEY (`id_unit`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1250 COLLATE=cp1250_czech_cs;
+
+INSERT INTO `units` (`id_unit`, `id_unit_type`, `HP`, `damage`, `id_character`) VALUES
+(1,	1,	5000,	500,	1),
+(2,	2,	3620,	360,	2),
+(3,	3,	15900,	4000,	5),
+(4,	4,	2500,	300,	3),
+(5,	5,	10000,	2000,	5),
+(6,	6,	200,	5,	6),
+(7,	7,	5000,	350,	4),
+(8,	8,	350,	15,	3),
+(9,	9,	666666,	9999,	1);
+
+CREATE TABLE `units_types` (
+  `id_units_types` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE cp1250_czech_cs NOT NULL,
+  PRIMARY KEY (`id_units_types`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1250 COLLATE=cp1250_czech_cs;
+
+INSERT INTO `units_types` (`id_units_types`, `name`) VALUES
+(1,	'Zombie'),
+(2,	'Elf'),
+(3,	'wolf'),
+(4,	'ghost'),
+(5,	'bear'),
+(6,	'dog'),
+(7,	'worker'),
+(8,	'monkey'),
+(9,	'tank');
+
