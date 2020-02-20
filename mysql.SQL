@@ -217,6 +217,15 @@ LIMIT 5;
 DELETE FROM players 
 WHERE id_guild = 2
 
+DESCRIBE units;
+DESCRIBE units_types;
+DESCRIBE characters;
+
+SELECT u.id_unit, u.HP, u.damage AS poskozeni, ch.name AS jméno, u_t.name AS druh_jednotky
+FROM units u
+JOIN units_types u_t ON u.id_unit_types = u_t.id_units_types
+JOIN characters ch ON u.id_character = ch.id_player
+
 ----OSSP_WARS----
 
 
