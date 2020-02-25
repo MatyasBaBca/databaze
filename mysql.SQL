@@ -226,6 +226,14 @@ FROM units u
 JOIN units_types u_t ON u.id_unit_types = u_t.id_units_types
 JOIN characters ch ON u.id_character = ch.id_player
 
+SELECT u_t.name AS "Název jednotky", ch.name AS "Jméno hrdiny", cl.name AS "Třída hrdiny", p.nickname AS "Jméno hráče", g.name AS "Jméno guildy"
+FROM units u
+JOIN units_types u_t ON u.id_unit_types = u_t.id_units_types
+JOIN characters ch ON ch.id_character = u.id_character
+JOIN classes cl ON cl.id_class = ch.id_class
+JOIN players p ON p.id_player = ch.id_player
+JOIN guilds g ON g.id_guild = p.id_guild
+
 ----OSSP_WARS----
 
 
